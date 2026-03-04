@@ -1,5 +1,7 @@
 package studio6;
 
+import javax.swing.Icon;
+
 import edu.princeton.cs.introcs.StdDraw;
 
 public class RecursiveMethods {
@@ -12,9 +14,17 @@ public class RecursiveMethods {
 	 *         ...)
 	 */
 	public static double geometricSum(int n) {
-		
+			if (n==0){
+				return 0;
+			}
+			else if (n==1){
+				return (double) 1/2;
+			}
+			else{
+					return geometricSum(n-1) + Math.pow(0.5, n);
+			}
 			// FIXME compute the geometric sum for the first n terms recursively
-			return 0;
+			
 		
 	}
 
@@ -30,8 +40,21 @@ public class RecursiveMethods {
 	 */
 	public static void circlesUponCircles(double xCenter, double yCenter, double radius, double radiusMinimumDrawingThreshold) {
 		
+		
+		if(radius>radiusMinimumDrawingThreshold){
+			
+			StdDraw.circle(xCenter,yCenter,radius);
+			double newRadius = radius /3.0;
+			circlesUponCircles(xCenter+radius, yCenter, newRadius, radiusMinimumDrawingThreshold);
+			circlesUponCircles(xCenter-radius, yCenter, newRadius, radiusMinimumDrawingThreshold);
+			circlesUponCircles(xCenter, yCenter+radius, newRadius, radiusMinimumDrawingThreshold);
+			circlesUponCircles(xCenter, yCenter-radius, newRadius, radiusMinimumDrawingThreshold);
+			
+			}
+		}
 		// FIXME complete the recursive drawing
-	}
+	
+
 	
 
 	/**
@@ -41,7 +64,10 @@ public class RecursiveMethods {
 	 * @return an array with the same data as the input but it reverse order
 	 */
 	public static int[] toReversed(int[] array) {
-		
+		int[] reverse = new reverse[array.length];
+		int[] temp = new int temp[reverse.length];
+		//helper has index --> traverses the loop as if a for loop i++
+
 			// FIXME create a helper method that can recursively reverse the given array
 			return new int[0];
 		
